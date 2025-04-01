@@ -1,0 +1,34 @@
+﻿@model HospitalAppointmentSystem.Models.Patient
+
+
+
+<a asp-controller="Patients" asp-action="Index" style="display: block; width: fit-content; margin-bottom: 15px; padding: 12px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);"> Back</a>
+
+<style>
+    body {
+        background: url(https://wallpaperaccess.com/full/4113244.jpg);
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+</style>
+   
+
+
+<h1 style="text-align: center; font-size: 28px; font-weight: bold; color: #fff; background-color: #007bff; padding: 15px; border-radius: 8px; margin-top: 20px;">➕ Add Patient</h1>
+<form asp-action="Create" style="width: 50%; margin: auto; padding: 20px; border: 2px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+    <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 10px;"><label>Name</label></td>
+            <td style="padding: 10px;"><input asp-for=  "Name" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;" /></td>
+        </tr>
+        <tr>
+            <td style="padding: 10px;"><label>Contact Info</label></td>
+            <td style="padding: 10px;"><input asp-for="ContactInfo" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;" /></td>
+        </tr>
+        <tr>
+            <td style="padding: 10px;"><label>Date of Birth</label></td>
+            <td style="padding: 10px;"><input asp-for="DateOfBirth" type="date" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;" /></td>
+        </tr>
+    </table>
+    <button type="submit" style="display: block; width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold; margin-top: 10px;">Add Patient</button>
+</form>

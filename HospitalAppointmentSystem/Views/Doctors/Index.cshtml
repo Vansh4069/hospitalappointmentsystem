@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HospitalAppointmentSystem.Models.Doctor>
+<style>
+    body {
+        background: url(https://wallpaperaccess.com/full/4113244.jpg);
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+</style>
+<h1 style="text-align: center; font-size: 32px; font-weight: bold; color: #fff; background-color: #007bff; padding: 15px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);"> Doctors List</h1>
+
+<a asp-action="Create" style="display: block; width: fit-content; margin-bottom: 15px; padding: 12px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);"> Add New Doctor</a>
+
+<table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 2px solid #007bff;">
+    <thead>
+        <tr style="background-color: #007bff; color: white; border: 2px solid #007bff;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">#</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Name</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Specialty</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Contact Info</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 1;
+        }
+        @foreach (var doctor in Model)
+        {
+            <tr style="border: 1px solid #ddd; background-color: @(count % 2 == 0 ? "#f9f9f9" : "white");">
+                <td style="padding: 10px; border: 1px solid #ddd;">@count</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">@doctor.Name</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">@doctor.Specialty</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">@doctor.ContactInfo</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">
+                    <a asp-action="Edit" asp-route-id="@doctor.DoctorID" style="padding: 8px 12px; background-color: #ffc107; color: black; text-decoration: none; border-radius: 5px; font-weight: bold; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);"> Edit</a>
+                    <a asp-action="Delete" asp-route-id="@doctor.DoctorID" style="padding: 8px 12px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); margin-left: 5px;"> Delete</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

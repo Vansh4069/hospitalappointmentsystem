@@ -1,0 +1,108 @@
+﻿@model HospitalAppointmentSystem.Models.Appointment
+
+<style>
+    body {
+        background: url(https://wallpaperaccess.com/full/4113244.jpg);
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        background-color: #007bff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+</style>
+
+<div class="container">
+    <h1> Schedule Appointment</h1>
+    <form asp-action="Create">
+        <div class="form-group">
+            <label asp-for="PatientID">Patient</label>
+            <select asp-for="PatientID" class="form-control" asp-items="@(ViewBag.Patients)"></select>
+            <span asp-validation-for="PatientID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DoctorID">Doctor</label>
+            <select asp-for="DoctorID" class="form-control" asp-items="@(ViewBag.Doctors)"></select>
+            <span asp-validation-for="DoctorID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AppointmentDate">Appointment Date & Time</label>
+            <input asp-for="AppointmentDate" type="datetime-local" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Status">Status</label>
+            <input asp-for="Status" class="form-control" placeholder="Enter Status (e.g., Scheduled, Completed)" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary"> Schedule Appointment</button>
+            <a asp-action="Index" class="btn btn-secondary"> Back to List</a>
+        </div>
+        
+
+    </form>
+</div>
